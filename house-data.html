@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>house-data</title>
+  <link rel="stylesheet" type="text/css" href="cssBootstrap/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- header -->
+    <header>
+      <div class="d-flex">
+        <div class="m-4 ">
+            <i class="fab fa-searchengin fuente1"></i>
+            <a href="#" class="fuente1">TGIF</a>
+        </div>
+          <div class="m-4 ml-auto">
+            <i class="far fa-envelope fuente1"></i>
+            <a class="fuente1" href="mailto:info@tgif.net">info@tgif.net</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- nav -->
+    <nav class="mb-4 navbar navbar-expand bg-light border border-dark">
+      <ul class="navbar-nav row w-100 mx-auto">
+        <li class="nav-item col-md-2">
+          <a  class="nav-link text-center" href="home.html">Home</a>
+        </li>
+        <li class="nav-item col-md-2">
+          <a class="nav-link btn btn-secondary" data-toggle="collapse" href="#collapse1">Congress 113</a>
+          <div id="collapse1" class="panel-collapse collapse">
+            <div class="list-group">
+              <a class="list-group-item list-group-item-action" href="senate-data.html">Senate</a>
+              <a class="list-group-item list-group-item-action" href="#">House</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item col-md-2">
+            <a class="nav-link text-center" data-toggle="collapse" href="#collapse2">Attendance</a>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="list-group">
+                  <a class="list-group-item list-group-item-action" href="senate-attendance-statistics.html">Senate</a>
+                  <a class="list-group-item list-group-item-action" href="house-attendance-statistics.html">House</a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item col-md-2">
+            <a class="nav-link text-center" data-toggle="collapse" href="#collapse3">Paty Loyalty</a>
+            <div id="collapse3" class="panel-collapse collapse">
+                <div class="list-group">
+                  <a class="list-group-item list-group-item-action" href="senate-party-loyalty-statistics.html">Senate</a>
+                  <a class="list-group-item list-group-item-action" href="house-party-loyalty-statistics.html">House</a>
+                </div>
+            </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- main -->
+    <main>
+      <div class="col-lg-8">
+        <h2>Congressmen</h2>
+        <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
+        <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
+      </div>
+
+      <!-- formulario con checkbox e input select-->
+      <form class="form-inline row">
+        <div class="col-lg-8">
+          <div class="form-check-inline">
+              <legend >Filter by Party:</legend>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="R">Republican
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="D">Democrat
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="I">Independent
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-check-inline float-lg-right">
+            <legend>Filter by State:</legend>
+            <select class="form-control ml-2" id="state-filter">
+                <option value="all">All</option>
+                <option value="TN">tn</option>
+            </select>
+          </div>
+        </div>
+      </form>
+
+      <!-- tabla con datos -->
+      <div class="table-responsive">
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th>Senator</th>
+                      <th>Party Affilication</th>
+                      <th>state</th>
+                      <th>seniority</th>
+                      <th>%votes with party</th>
+                  </tr>
+              </thead>
+              <tbody id="house-data">
+              </tbody>
+          </table>
+      </div>
+      <div class="spinner-border text-muted" id="carga"></div>
+    </main>
+    <footer >
+      <div class="card-footer text-center mb-5 border border-dark" id="footer">
+        <p>&#169;2016 TGIF | All Rights Reserved</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- font awesone -->
+  <script src="https://kit.fontawesome.com/c1c77cc02b.js"></script>
+  <!-- datos json -->
+  <script type="text/javascript" src="js/-congress-113-house.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

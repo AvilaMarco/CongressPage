@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>senate loyalty</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="cssBootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body id="lolayty">
+    <div class="container">
+
+        <!-- header -->
+        <header>
+          <div class="d-flex">
+            <div class="m-4 ">
+                <i class="fab fa-searchengin fuente1"></i>
+                <a href="#" class="fuente1">TGIF</a>
+            </div>
+            <div class="m-4 ml-auto">
+                <i class="far fa-envelope fuente1"></i>
+                <a class="fuente1" href="mailto:info@tgif.net">info@tgif.net</a>
+            </div>
+          </div>
+        </header>
+
+        <!-- NAV -->
+        <nav class="mb-4 navbar navbar-expand bg-light border border-dark ">
+            <ul class="navbar-nav row w-100 mx-auto">
+                <li class="nav-item col-md-2">
+                    <a  class="nav-link text-center" href="home.html">Home</a>
+                </li>
+                <li class="nav-item col-md-2">
+                    <a class="nav-link text-center" data-toggle="collapse" href="#collapse1">Congress 113</a>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="list-group">
+                          <a class="list-group-item list-group-item-action" href="senate-data.html">Senate</a>
+                          <a class="list-group-item list-group-item-action" href="house-data.html">House</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item col-md-2">
+                    <a class="nav-link text-center" data-toggle="collapse" href="#collapse2">Attendance</a>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="list-group">
+                          <a class="list-group-item list-group-item-action" href="senate-attendance-statistics.html">Senate</a>
+                          <a class="list-group-item list-group-item-action" href="house-attendance-statistics.html">House</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item col-md-2">
+                    <a class="nav-link btn btn-secondary" data-toggle="collapse" href="#collapse3">Party Loyalty</a>
+                    <div id="collapse3" class="panel-collapse collapse">
+                        <div class="list-group">
+                          <a class="list-group-item list-group-item-action" href="#">Senate</a>
+                          <a class="list-group-item list-group-item-action" href="house-party-loyalty-statistics.html">House</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <!--Table container-->
+        <div class="row border border-dark border-top-0 border-left-0 border-right-0">
+            <div class="col-md-6 hestandar">
+                <h2>Party Loyalty</h2>
+                <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
+            </div>
+
+            <div class="col-md-6 hestandar text-center">
+                <h2 class="text-right">Senate at a glance</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Party</th>
+                            <th>Number of Reps</th>
+                            <th>% Voted with Party</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-at-a-glance">
+                        <tr>
+                            <td>Republican</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>Democrat</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>Independent</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6 hestandar2">
+                <h2>Least Loyal (Bottom 10% of Party)</h2>
+                <div class="scroll text-center">
+                    <table class="table table-bordered tamaño">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Number Party Votes</th>
+                                <th>% Party Votes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="Least-table">
+                            <tr>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--loyal most table-->
+            <div class="col-md-6 hestandar2">
+                <h2>Most Loyal (Top 10% of Party)</h2>
+                <div class="scroll text-center">
+                    <table class="table table-bordered tamaño">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Number Party Votes</th>
+                                <th>% Party Votes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="Most-table">
+                            <tr>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <footer >
+            <div class="card-footer text-center mb-5 border border-dark" id="footer">
+                <p>&#169;2016 TGIF | All Rights Reserved</p>
+            </div>
+        </footer>
+    </div>
+      <!--scipts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- font awesone -->
+    <script src="https://kit.fontawesome.com/c1c77cc02b.js"></script>
+    <!-- datos scripts  -->
+    <script type="text/javascript" src="js/-congress-113-senate.js"></script>
+    <script type="text/javascript" src="js/estadisticas-web.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+.fuente1
+{
+	font-size: 2rem;
+	padding-left: 5px;
+}
+
+.scroll
+{
+	position: relative;
+	height: 300px;
+    width: 520px;
+	overflow: auto;
+}
+.tamaño
+{
+    width: 500px;
+}
+
+.hestandar
+{
+	height: 330px;
+}
+.hestandar2
+{
+	height: 400px;
+}
