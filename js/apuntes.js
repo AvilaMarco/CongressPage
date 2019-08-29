@@ -55,3 +55,8 @@
 // }
 
 // https://www.azulweb.net/#
+
+/*ajax enviar datos a un servidor, peticiones de cambios, es una tenologia
+asincronico java scip y XMLDocument
+fetch(url,)
+.then(function)*/

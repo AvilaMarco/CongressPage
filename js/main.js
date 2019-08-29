@@ -2,7 +2,7 @@
 let tBodySenate = document.querySelector('#senate-data');
 let tBodyHouse = document.querySelector('#house-data');
 let carga = document.querySelector('#carga');
-let checkbox = document.querySelectorAll('form input');
+/*let checkbox = document.querySelectorAll('form input');*/
 let selectState = document.querySelector('#state-filter');
 
 // datos json
@@ -15,14 +15,60 @@ let animationCarga;
 let states=[];
 let state;
 
+let app = new Vue({
+    el:'#app',
+    data:{
+        
+        checkbox:[
+            {
+                check:false,
+                value:"R",
+                name:"Republican"
+            },
+            {
+                check:false,
+                value:"D",
+                name:"Democrat"
+            },
+            {
+                check:false,
+                value:"I",
+                name:"Independent"
+            }
+        ],
+        datosCongress:datosCongress,
+        selecStates:[],
+        valueSelect:"all",
+        tabla:[]
+    },
+    methods:{
+        valorBox(){
+                this.checkbox.filter(e=>e.check)
+            },
+        selects(){
+            datosCongress.forEach(e=>this.selecStates.indexOf(e.state)==-1?this.selecStates.push(e.state):null)
+        },
+        filter(){
+        if(true){
+            this.tabla = []
+            this.datosCongress=datosCongress
+            this.datosCongress.forEach(e=>this.valueSelect==e.state?this.tabla.push(e):null)
+            this.datosCongress = this.tabla
+        }
+        }
+    }
+})
+
+app.selects()
+
 // elije la pagina en la que agrega los datos de la tabla
 definirCarga();
 // agrega las option al select
-buildSelect(datosCongress,states,selectState);
+/*buildSelect(datosCongress,states,selectState);*/
 // construye la tabla por defecto, sin filtros
-buildTable(datosCongress,cargaActualHtml,checkbox);
+/*buildTable(datosCongress,cargaActualHtml,checkbox);*/
 // agrega el escuchador de eventos a los inputs checkbox y al select
-checkbox.forEach(box => box.addEventListener("change",filter))
+/*checkbox.forEach(box => box.addEventListener("change",filter))*/
 selectState.addEventListener("change",filter);
 
 function buildSelect(datosMenber,arrayState,elementHTML)
