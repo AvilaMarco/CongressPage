@@ -8,11 +8,11 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
-<body id="lolayty">
-    <div class="container">
+<body>
+    <div id="app" class="container">
 
         <!-- header -->
-        <header>
+        <header id="lolayty">
           <div class="d-flex">
             <div class="m-4 ">
                 <i class="fab fa-searchengin fuente1"></i>
@@ -70,6 +70,7 @@
 
             <div class="col-md-6 hestandar text-center">
                 <h2 class="text-right">Senate at a glance</h2>
+              
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -78,24 +79,30 @@
                             <th>% Voted with Party</th>
                         </tr>
                     </thead>
-                    <tbody id="tabla-at-a-glance">
+                    <tbody>
                         <tr>
                             <td>Republican</td>
-                            <td>--</td>
-                            <td>--</td>
+                            <td>{{estadisticasVue.Number_of_Republican}}</td>
+                            <td>{{estadisticasVue.votes_pct_Republican}}</td>
                         </tr>
                         <tr>
                             <td>Democrat</td>
-                            <td>--</td>
-                            <td>--</td>
+                            <td>{{estadisticasVue.Number_of_Democrats}}</td>
+                            <td>{{estadisticasVue.votes_pct_Democrats}}</td>
                         </tr>
                         <tr>
                             <td>Independent</td>
-                            <td>--</td>
-                            <td>--</td>
+                            <td>{{estadisticasVue.Number_of_Independents}}</td>
+                            <td>{{estadisticasVue.votes_pct_Independents}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>{{estadisticasVue.total_menbers}}</td>
+                            <td>{{estadisticasVue.total_pct}}</td>
                         </tr>
                     </tbody>
                 </table>
+              
             </div>
         </div>
 
@@ -112,10 +119,10 @@
                             </tr>
                         </thead>
                         <tbody id="Least-table">
-                            <tr>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
+                            <tr v-for="menber in menbersL">
+                                <td>{{menber.first_name}}{{(menber.middle_name || "")}}{{menber.last_name}}</td>
+                                <td>{{((menber.total_votes * menber.votes_with_party_pct)/100)}}</td>
+                                <td>{{menber.votes_with_party_pct}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -135,10 +142,10 @@
                             </tr>
                         </thead>
                         <tbody id="Most-table">
-                            <tr>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
+                            <tr v-for="menber in menbersM">
+                                <td>{{menber.first_name}}{{(menber.middle_name || "")}}{{menber.last_name}}</td>
+                                <td>{{((menber.total_votes * menber.votes_with_party_pct)/100)}}</td>
+                                <td>{{menber.votes_with_party_pct}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -152,13 +159,15 @@
         </footer>
     </div>
       <!--scipts-->
+  <!--vue js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- font awesone -->
     <script src="https://kit.fontawesome.com/c1c77cc02b.js"></script>
     <!-- datos scripts  -->
-    <script type="text/javascript" src="js/-congress-113-senate.js"></script>
+    <!--<script type="text/javascript" src="js/-congress-113-senate.js"></script>-->
     <script type="text/javascript" src="js/estadisticas-web.js"></script>
 </body>
 </html>

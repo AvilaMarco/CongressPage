@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-  <div class="container">
+  <div id="app" class="container">
 
     <!-- header -->
     <header>
@@ -72,32 +72,27 @@
       <form class="form-inline row">
         <div class="col-lg-8">
           <div class="form-check-inline">
-              <legend >Filter by Party:</legend>
+            <legend >Filter by Party:</legend>
           </div>
-          <div class="form-check-inline">
+          
+		  <div v-for="box in checkbox" class="form-check-inline">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="R">Republican
+              <input v-model="checkboxaux" @change="filter" type="checkbox" class="form-check-input" :value="box.value">{{box.name}}
             </label>
           </div>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="D">Democrat
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="I">Independent
-            </label>
-          </div>
+          
         </div>
+          
         <div class="col-lg-4">
+          
           <div class="form-check-inline float-lg-right">
             <legend>Filter by State:</legend>
-            <select class="form-control ml-2" id="state-filter">
+            <select v-model="valueSelect" @change="filter" class="form-control ml-2">
                 <option value="all">All</option>
-                <option value="TN">tn</option>
+                <option v-for="(state in selecStates" :value="state">{{state}}</option>
             </select>
           </div>
+          
         </div>
       </form>
 
@@ -114,6 +109,18 @@
                   </tr>
               </thead>
               <tbody id="house-data">
+                
+                <tr v-for="menber in (primeraCarga?datosCongress:tablaux)">
+                  <td><a :href="menber.url">{{menber.first_name}}
+                      {{(menber.middle_name || "")}}
+                      {{menber.last_name}}</a>
+                  </td>
+                  <td>{{menber.party}}</td>
+                  <td>{{menber.state}}</td>
+                  <td>{{menber.seniority}}</td>
+                  <td>{{menber.votes_with_party_pct}}</td>
+                </tr>
+                
               </tbody>
           </table>
       </div>
@@ -127,6 +134,8 @@
   </div>
 
   <!-- scripts -->
+    <!--vue js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
