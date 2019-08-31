@@ -58,7 +58,10 @@ function traerJson(pagina)
 	}).then(function(data){
 	app.datosCongress = data.results[0].members;
     app.selects()
-    if (animationCarga){carga.style.display="none";animationCarga = false;}
+    if (animationCarga){
+    	carga.classList.remove("spinner-border");
+    	carga.style.display = "none";
+    	animationCarga = false;}
 	});
 }
 

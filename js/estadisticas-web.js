@@ -70,7 +70,7 @@ Vue.component('tabla-estadistics',{
         </thead>
         <tbody>
             <tr v-for="menber in arraymenbers">
-                <td><a :href="menber.url">{{menber.first_name}}{{(menber.middle_name || "")}}{{menber.last_name}}</a></td>
+                <td><a :href="menber.url" target="_blank">{{menber.first_name}}{{(menber.middle_name || "")}}{{menber.last_name}}</a></td>
                 <td>{{((menber.total_votes * menber.votes_with_party_pct)/100).toFixed(2)}}</td>
                 <td>{{menber.votes_with_party_pct}}</td>
             </tr>
@@ -86,7 +86,7 @@ Vue.component('tabla-estadistics',{
         </thead>
         <tbody>
             <tr v-for="menber in arraymenbers">
-                <td><a :href="menber.url">{{menber.first_name}}{{(menber.middle_name || "")}}{{menber.last_name}}</a></td>
+                <td><a :href="menber.url" target="_blank">{{menber.first_name}}{{(menber.middle_name || "")}}{{menber.last_name}}</a></td>
                 <td>{{menber.missed_votes}}</td>
                 <td>{{menber.missed_votes_pct.toFixed(2)}}</td>
             </tr>
