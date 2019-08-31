@@ -7,10 +7,10 @@
     <link rel="stylesheet" type="text/css" href="cssBootstrap/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body id="attendance">
-    <div class="container">
+<body>
+    <div id="app" class="container">
         <!-- header -->
-        <header>
+        <header id="attendance">
           <div class="d-flex">
             <div class="m-4 ">
                 <i class="fab fa-searchengin fuente1"></i>
@@ -24,7 +24,7 @@
         </header>
 
         <!-- NAV -->
-        <nav class="mb-4 navbar navbar-expand bg-light border border-dark ">
+        <nav id="senate-data" class="mb-4 navbar navbar-expand bg-light border border-dark ">
             <ul class="navbar-nav row w-100 mx-auto">
                 <li class="nav-item col-md-2">
                     <a  class="nav-link text-center" href="home.html">Home</a>
@@ -69,8 +69,8 @@
     	    
             <div class="col-md-6 hestandar">
                 <h2>Senate at a glance</h2>
-              
-                <table class="table table-bordered tamaño">
+                <tabla-glance :estadisticasg="estadisticasVue"></tabla-glance>
+                <!-- <table class="table table-bordered tamaño">
                     <thead>
                         <tr>
                             <th>Party</th>
@@ -95,14 +95,14 @@
                             <td>--</td>
                         </tr>
                     </tbody>
-                </table>
-              
+                </table> -->
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-md-6 hestandar2">
                 <h2>Least Engaged(Low 10% Attendance)</h2>
-                <div class="scroll text-center">
+                <tabla-estadistics :isattendance="si" :arraymenbers="menbersL"></tabla-estadistics>
+                <!-- <div class="scroll text-center">
                     <table class="table table-bordered tamaño">
                         <thead>
                             <tr>
@@ -119,11 +119,12 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> -->
             </div>
             <div class="col-md-6 hestandar2">
                 <h2>Most Engaged (Top 10% Attendance)</h2>
-                <div class="scroll text-center">
+                <tabla-estadistics :isattendance="si" :arraymenbers="menbersM"></tabla-estadistics>
+                <!-- <div class="scroll text-center">
                     <table class="table table-bordered tamaño">
                         <thead>
                             <tr>
@@ -140,7 +141,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> -->
             </div>
     	</div>
         <footer >
@@ -150,6 +151,8 @@
         </footer>
     </div>
       <!--scipts-->
+      <!--vue js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

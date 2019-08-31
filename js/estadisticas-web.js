@@ -12,20 +12,11 @@ var estadisticas =
 }
 
 // objetos html
-let tablaGlance = document.querySelector("#tabla-at-a-glance");
-let tableLeast = document.querySelector("#Least-table");
-let tableMost = document.querySelector("#Most-table");
 let attendace = document.querySelector("#attendance");
 let lolayty = document.querySelector("#lolayty");
+let tBodySenate = document.querySelector('#senate-data');
 
-/*// datos json
-let datosCongress = datos.results[0].members;*/
-// variables javascript
-let congressRepublican = [];
-let congressDemocrats = [];
-let congressIndependents = [];
-
-traerJson("senate")
+tBodySenate==null?traerJson("house"):traerJson("senate")
 
 function traerJson(pagina)
 {
@@ -35,37 +26,177 @@ function traerJson(pagina)
 	}).then(function(response){if(response.ok){return response.json()}
 	}).then(function(data){
     app.datosCongress = data.results[0].members;
-    let datosCongress = data.results[0].members;
-    listasPorPartido(datosCongress);
+    listasPorPartido(app.datosCongress);
       
     //contruir tablas con las estadisticas
-    /*senateAtAGlance(tablaGlance);*/
     if(attendace == null)
     {
-        tableLoyal(false,"min");
-        tableLoyal(true,"max");
-        console.log("nice")
+        tableStadistics(false,"min",'votes_with_party_pct');
+        tableStadistics(true,"max",'votes_with_party_pct');
     }else if(lolayty == null)
     {
-        tableEngaged(app.menbersL,"min");
-        tableEngaged(app.menbersM,"max");
+        tableStadistics(false,"max",'missed_votes_pct');
+        tableStadistics(true,"min",'missed_votes_pct');
     }
-
-
-    });
+  });
 }
+/*votes_with_party_pct*/
+/*<thead>
+            <tr>
+                <th>Name</th>
+                <th>Number of Missed Votes</th>
+                <th>% Missed</th>
+            </tr>
+        </thead>*/
+Vue.component('tabla-estadistics',{
+  props:{
+    arraymenbers:{
+      type: Array,
+      required: true
+    },
+    isattendance:{
+      type:Boolean,
+      required:true,
+    }
+  },
+  template:`<div class="scroll text-center">
+    <table v-if="!isattendance" class="table table-bordered tamaño">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number Party Votes</th>
+                <th>% Party Votes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="menber in arraymenbers">
+                <td><a :href="menber.url">{{menber.first_name}}{{(menber.middle_name || "")}}{{menber.last_name}}</a></td>
+                <td>{{((menber.total_votes * menber.votes_with_party_pct)/100).toFixed(2)}}</td>
+                <td>{{menber.votes_with_party_pct}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table v-if="isattendance" class="table table-bordered tamaño">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number of Missed Votes</th>
+                <th>% Missed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="menber in arraymenbers">
+                <td><a :href="menber.url">{{menber.first_name}}{{(menber.middle_name || "")}}{{menber.last_name}}</a></td>
+                <td>{{menber.missed_votes}}</td>
+                <td>{{menber.missed_votes_pct.toFixed(2)}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>`
+})
+
+Vue.component('tabla-glance',{
+  props:{
+    estadisticasg:{
+      type:Object,
+      required:true
+    }
+  },
+  template:`<table class="table table-bordered">
+              <thead>
+                  <tr>
+                      <th>Party</th>
+                      <th>Number of Reps</th>
+                      <th>% Voted with Party</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Republican</td>
+                      <td>{{estadisticasg.Number_of_Republican}}</td>
+                      <td>{{estadisticasg.votes_pct_Republican}}</td>
+                  </tr>
+                  <tr>
+                      <td>Democrat</td>
+                      <td>{{estadisticasg.Number_of_Democrats}}</td>
+                      <td>{{estadisticasg.votes_pct_Democrats}}</td>
+                  </tr>
+                  <tr>
+                      <td>Independent</td>
+                      <td>{{estadisticasg.Number_of_Independents}}</td>
+                      <td>{{estadisticasg.votes_pct_Independents}}</td>
+                  </tr>
+                  <tr>
+                      <td>Total</td>
+                      <td>{{estadisticasg.total_menbers}}</td>
+                      <td>{{estadisticasg.total_pct}}</td>
+                  </tr>
+              </tbody>
+          </table>`
+})
 
 let app = new Vue({
   el:'#app',
   data:{
     datosCongress:[],
-    name:"hola",
     estadisticasVue:estadisticas,
+    menbersM:[],
     menbersL:[],
-    menbersM:[]
+    si:true,
+    no:false
   }
 })
 
+function tableStadistics(isAscendente,orden,prop)
+{
+  if(isAscendente){
+    app.menbersM = diesPorcientoBT(prop,orden);
+  }else{
+    app.menbersL = diesPorcientoBT(prop,orden);
+  }
+}
+
+function diesPorcientoBT(propiedad,orden)
+{
+    let diezP = Math.floor((app.datosCongress.length * 10)/100);
+    let minimosObjetos = [];
+    let minimosValores = obtenerArrayDatos(app.datosCongress,diezP,propiedad,orden);
+    
+    for(let i=0;i<minimosValores.length;i++)
+    {
+      let aux = minimosValores[i];
+      app.datosCongress.forEach((item) => item[propiedad] == aux ? minimosObjetos.push(item):null)
+    }
+  return minimosObjetos;
+}
+
+function obtenerArrayDatos(Array,porcentaje,propiedad,orden)
+{
+  let listCompare = [];
+                        
+    for(let i = 0; i < porcentaje ; i++)
+    {
+      let auxTB = null;
+      for(let i=0;i<Array.length;i++)
+      {
+        if(orden=="min")
+        {
+          if((auxTB==null ||auxTB>Array[i][propiedad]) && (listCompare.indexOf(Array[i][propiedad]) == -1))
+          {
+            auxTB = Array[i][propiedad];
+          }
+        }else if(orden=="max")
+        {
+          if((auxTB==null ||auxTB<Array[i][propiedad]) && (listCompare.indexOf(Array[i][propiedad]) == -1))
+          {
+            auxTB = Array[i][propiedad];
+          }
+        }
+      }
+      listCompare.push(auxTB)                   
+    }
+    return listCompare;
+}
 
 
 function listasPorPartido(arrayMenber)
@@ -100,13 +231,38 @@ function listasPorPartido(arrayMenber)
   estadisticas.Number_of_Republican = contR;
 }
 
-function tableLoyal(isAscendente,orden)
+
+
+/*function tableEngaged(isAscendente,orden)
 {
   if(isAscendente){
-    app.menbersM = diesPorcientoBT("votes_with_party_pct",orden);
+    app.menbersM = diesPorcientoBT("missed_votes_pct",orden);
   }else{
-    app.menbersL = diesPorcientoBT("votes_with_party_pct",orden);
+    app.menbersL = diesPorcientoBT("missed_votes_pct",orden);
   }
+  
+}*/
+/*let tablaGlance = document.querySelector("#tabla-at-a-glance");*/
+/*let tableLeast = document.querySelector("#Least-table");
+let tableMost = document.querySelector("#Most-table");*/
+
+/*// datos json
+let datosCongress = datos.results[0].members;*/
+// variables javascript
+/*let congressRepublican = [];
+let congressDemocrats = [];
+let congressIndependents = [];*/
+
+/*objetoHtml.innerHTML = "";
+  for(let i = 0; i < datos.length;i++)
+    {
+      objetoHtml.innerHTML += `<tr>
+                    <td>${datos[i].first_name} ${(datos[i].middle_name || "")} ${datos[i].last_name}</td>
+                    <td>${datos[i].missed_votes}</td>
+                    <td>${datos[i].missed_votes_pct.toFixed(2)}</td>
+                  </tr>`
+    }*/
+
   /*objetoHtml.innerHTML = "";
   for(let i = 0; i < datos.length;i++)
     {
@@ -116,25 +272,6 @@ function tableLoyal(isAscendente,orden)
                     <td>${datos[i].votes_with_party_pct.toFixed(2)}</td>
                   </tr>`
     }*/
-}
-
-function tableEngaged(isAscendente,orden)
-{
-  if(isAscendente){
-    app.menbersM = diesPorcientoBT("missed_votes_pct",orden);
-  }else{
-    app.menbersL = diesPorcientoBT("missed_votes_pct",orden);
-  }
-  /*objetoHtml.innerHTML = "";
-  for(let i = 0; i < datos.length;i++)
-    {
-      objetoHtml.innerHTML += `<tr>
-                    <td>${datos[i].first_name} ${(datos[i].middle_name || "")} ${datos[i].last_name}</td>
-                    <td>${datos[i].missed_votes}</td>
-                    <td>${datos[i].missed_votes_pct.toFixed(2)}</td>
-                  </tr>`
-    }*/
-}
 
 /*listasPorPartido(datosCongress,congressRepublican,congressDemocrats,congressIndependents);
 
@@ -181,47 +318,6 @@ if(attendace == null)
 
   }*/
 
-function diesPorcientoBT(propiedad,orden)
-{
-    let diezP = Math.floor((app.datosCongress.length * 10)/100);
-    let minimosObjetos = [];
-		let minimosValores = obtenerArrayDatos(app.datosCongress,diezP,propiedad,orden);
-		
-    for(let i=0;i<minimosValores.length;i++)
-		{
-			let aux = minimosValores[i];
-			app.datosCongress.forEach((item) => item[propiedad] == aux ? minimosObjetos.push(item):null)
-		}
-	return minimosObjetos;
-}
-
-function obtenerArrayDatos(Array,porcentaje,propiedad,orden)
-{
-	let listCompare = [];
-												
-    for(let i = 0; i < porcentaje ; i++)
-		{
-			let auxTB = null;
-			for(let i=0;i<Array.length;i++)
-			{
-				if(orden=="min")
-				{
-					if((auxTB==null ||auxTB>Array[i][propiedad]) && (listCompare.indexOf(Array[i][propiedad]) == -1))
-					{
-						auxTB = Array[i][propiedad];
-					}
-				}else if(orden=="max")
-				{
-					if((auxTB==null ||auxTB<Array[i][propiedad]) && (listCompare.indexOf(Array[i][propiedad]) == -1))
-					{
-						auxTB = Array[i][propiedad];
-					}
-				}
-			}
-			listCompare.push(auxTB)										
-		}
-		return listCompare;
-}
 
 
 
