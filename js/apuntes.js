@@ -60,3 +60,13 @@
 asincronico java scip y XMLDocument
 fetch(url,)
 .then(function)*/
+
+/*vue instancia 
+computed se ejecuta cuando cambian su variables usadas
+methods se ejecuta siempe que cambian las vaiables de as instancia*/
+//key de open state:13b2120c-4d1c-4c70-8904-151c6088644f
+//http://docs.openstates.org/en/latest/api/index.html
+
+//obtene datos json: http://static.socraticarts.com/AjaxTester/
+/*/metadata/state/
+/legislators?state=CA*/

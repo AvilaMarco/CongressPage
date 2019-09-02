@@ -26,7 +26,7 @@
         </header>
 
         <!-- NAV -->
-        <nav class="mb-4 navbar navbar-expand bg-light border border-dark ">
+        <nav class="mb-4 navbar navbar-expand bg-light border border-dark text-center">
             <ul class="navbar-nav row w-100 mx-auto">
                 <li class="nav-item col-md-2">
                     <a  class="nav-link text-center" href="index.html">Home</a>
@@ -65,87 +65,25 @@
             <div class="col-md-6 hestandar">
                 <h2 >Party Loyalty</h2>
                 <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
-            </div>
-    	    
+            </div>   	    
             <div class="col-md-6 hestandar">
                 <h2 class="text-right">House at a glance</h2>
                 <tabla-glance :estadisticasg="estadisticasVue"></tabla-glance>
-                <!-- <table class="table table-bordered tamaño">
-                    <thead>
-                        <tr>
-                            <th>Party</th>
-                            <th>Number of Reps</th>
-                            <th>% Voted with Prty</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabla-at-a-glance">
-                        <tr>
-                            <td>Republican</td>
-                            <td>--</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
-                            <td>Democrat</td>
-                            <td>--</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
-                            <td>Independent</td>
-                            <td>--</td>
-                            <td>--</td>
-                        </tr>
-                    </tbody>
-                </table> -->
             </div>
         </div>
+
         <div class="row mt-4">
             <div class="col-md-6 hestandar2">
                 <h2>Least Loyal (Bottom 10% of Party)</h2>
                 <tabla-estadistics :isattendance="no" :arraymenbers="menbersL"></tabla-estadistics>
-                <!-- <div class="scroll text-center">
-                    <table class="table table-bordered tamaño">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Number Party Votes</th>
-                                <th>% Party Votes</th>
-                            </tr>
-                        </thead>
-                        <tbody id="Least-table">
-                            <tr>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> -->
+                
             </div>
-
             <div class="col-md-6 hestandar2">
                 <h2>Most Loyal (Top 10% of Party)</h2>
-                <tabla-estadistics :isattendance="no" :arraymenbers="menbersM"></tabla-estadistics>
-                <!-- <div class="scroll text-center">
-                    <table class="table table-bordered tamaño">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Number Party Votes</th>
-                                <th>% Party Votes</th>
-                            </tr>
-                        </thead>
-                        <tbody id="Most-table">
-                            <tr>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> -->
+                <tabla-estadistics :isattendance="no" :arraymenbers="menbersM"></tabla-estadistics>      
             </div>
-
     	</div>
+        
         <footer >
             <div class="card-footer text-center mb-5 border border-dark" id="footer">
                 <p>&#169;2016 TGIF | All Rights Reserved</p>
@@ -165,3 +103,67 @@
     <script type="text/javascript" src="js/estadisticas-web.js"></script>    
 </body>
 </html>
+
+<!-- pagina vieja -->
+<!-- <div class="scroll text-center">
+                    <table class="table table-bordered tamaño">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Number Party Votes</th>
+                                <th>% Party Votes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="Least-table">
+                            <tr>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> -->
+ <!-- <div class="scroll text-center">
+                    <table class="table table-bordered tamaño">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Number Party Votes</th>
+                                <th>% Party Votes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="Most-table">
+                            <tr>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> -->
+ <!-- <table class="table table-bordered tamaño">
+    <thead>
+        <tr>
+            <th>Party</th>
+            <th>Number of Reps</th>
+            <th>% Voted with Prty</th>
+        </tr>
+    </thead>
+    <tbody id="tabla-at-a-glance">
+        <tr>
+            <td>Republican</td>
+            <td>--</td>
+            <td>--</td>
+        </tr>
+        <tr>
+            <td>Democrat</td>
+            <td>--</td>
+            <td>--</td>
+        </tr>
+        <tr>
+            <td>Independent</td>
+            <td>--</td>
+            <td>--</td>
+        </tr>
+    </tbody>
+</table> -->

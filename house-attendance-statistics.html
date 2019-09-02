@@ -26,7 +26,7 @@
         </header>
 
         <!-- NAV -->
-        <nav class="mb-4 navbar navbar-expand bg-light border border-dark ">
+        <nav class="mb-4 navbar navbar-expand bg-light border border-dark text-center">
             <ul class="navbar-nav row w-100 mx-auto">
                 <li class="nav-item col-md-2">
                     <a  class="nav-link text-center" href="index.html">Home</a>
@@ -67,12 +67,84 @@
                 <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
 
                 <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
-            </div>
-    	    
+            </div>    
             <div class="col-md-6 hestandar">
                 <h2 class="text-right">House at a glance</h2>
                 <tabla-glance :estadisticasg="estadisticasVue"></tabla-glance>
-                <!-- <table class="table table-bordered tamaño">
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6 hestandar2">
+                <h2>Least Engaged(Low 10% Attendance)</h2>
+                <tabla-estadistics :isattendance="si" :arraymenbers="menbersL"></tabla-estadistics>
+                
+            </div>
+            <div class="col-md-6 hestandar2">
+                <h2>Most Engaged (Top 10% Attendance)</h2>
+                <tabla-estadistics :isattendance="si" :arraymenbers="menbersM"></tabla-estadistics>
+            </div>
+    	</div>
+
+        <footer>
+            <div class="card-footer text-center mb-5 border border-dark" id="footer">
+                <p>&#169;2016 TGIF | All Rights Reserved</p>
+            </div>
+        </footer>
+    </div>
+    <!--scipts-->
+    <!--vue js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- font awesone -->
+    <script src="https://kit.fontawesome.com/c1c77cc02b.js"></script>
+
+        <!-- datos script -->
+    <script type="text/javascript" src="js/-congress-113-house.js"></script>
+    <script type="text/javascript" src="js/estadisticas-web.js"></script>    
+</body>
+</html>
+
+<!-- pagina vieja -->
+<!-- <div class="scroll text-center">
+                    <table class="table table-bordered tamaño">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Number of Missed Votes</th>
+                                <th>% Missed</th>
+                            </tr>
+                        </thead>
+                        <tbody id="Most-table">
+                            <tr>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> -->
+ <!-- <div class="scroll text-center">
+                    <table class="table table-bordered tamaño">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Number of Missed Votes</th>
+                                <th>% Missed</th>
+                            </tr>
+                        </thead>
+                        <tbody id="Least-table">
+                            <tr>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> -->
+<!-- <table class="table table-bordered tamaño">
                     <thead>
                         <tr>
                             <th>Party</th>
@@ -98,73 +170,3 @@
                         </tr>
                     </tbody>
                 </table> -->
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-md-6 hestandar2">
-                <h2>Least Engaged(Low 10% Attendance)</h2>
-                <tabla-estadistics :isattendance="si" :arraymenbers="menbersL"></tabla-estadistics>
-                <!-- <div class="scroll text-center">
-                    <table class="table table-bordered tamaño">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Number of Missed Votes</th>
-                                <th>% Missed</th>
-                            </tr>
-                        </thead>
-                        <tbody id="Most-table">
-                            <tr>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> -->
-            </div>
-
-            <div class="col-md-6 hestandar2">
-                <h2>Most Engaged (Top 10% Attendance)</h2>
-                <tabla-estadistics :isattendance="si" :arraymenbers="menbersM"></tabla-estadistics>
-                <!-- <div class="scroll text-center">
-                    <table class="table table-bordered tamaño">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Number of Missed Votes</th>
-                                <th>% Missed</th>
-                            </tr>
-                        </thead>
-                        <tbody id="Least-table">
-                            <tr>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> -->
-            </div>
-
-    	</div>
-        <footer >
-            <div class="card-footer text-center mb-5 border border-dark" id="footer">
-                <p>&#169;2016 TGIF | All Rights Reserved</p>
-            </div>
-        </footer>
-    </div>
-    <!--scipts-->
-    <!--vue js-->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <!-- font awesone -->
-    <script src="https://kit.fontawesome.com/c1c77cc02b.js"></script>
-
-        <!-- datos script -->
-    <script type="text/javascript" src="js/-congress-113-house.js"></script>
-    <script type="text/javascript" src="js/estadisticas-web.js"></script>    
-</body>
-</html>

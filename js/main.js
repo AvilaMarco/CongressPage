@@ -1,12 +1,13 @@
 // elementos html
 let tBodySenate = document.querySelector('#senate-data');
 let tBodyHouse = document.querySelector('#house-data');
-let carga = document.querySelector('#carga');
+var carga = document.querySelector('#carga');
+
+
 
 // variables javascript
 let primeraCarga = true;
 let cargaActualHtml;
-let animationCarga;
 
 definirCarga()
 
@@ -57,11 +58,9 @@ function traerJson(pagina)
 	}).then(function(response){ if(response.ok){return response.json() }
 	}).then(function(data){
 	app.datosCongress = data.results[0].members;
-    app.selects()
-    if (animationCarga){
-    	carga.classList.remove("spinner-border");
-    	carga.style.display = "none";
-    	animationCarga = false;}
+    app.selects();
+	//carga.classList.remove("spinner-border");
+	carga.style.display = "none";
 	});
 }
 
@@ -69,16 +68,15 @@ function definirCarga()
 {
 	if(tBodyHouse==null)
 	{
-		animationCarga = false;
 		cargaActualHtml = tBodySenate;
         traerJson("senate")
 	}else if(tBodySenate==null){
-		animationCarga = true;
 		cargaActualHtml = tBodyHouse;
         traerJson("house")
 	}
 }
 
+scope del query querySelector
 /*
 let filtrado = (state!="all" && filter.length!=0)
 let filtroEstado = datosMenber[i].state == state;

@@ -40,14 +40,7 @@ function traerJson(pagina)
     }
   });
 }
-/*votes_with_party_pct*/
-/*<thead>
-            <tr>
-                <th>Name</th>
-                <th>Number of Missed Votes</th>
-                <th>% Missed</th>
-            </tr>
-        </thead>*/
+
 Vue.component('tabla-estadistics',{
   props:{
     arraymenbers:{
@@ -232,7 +225,14 @@ function listasPorPartido(arrayMenber)
 }
 
 
-
+/*votes_with_party_pct*/
+/*<thead>
+            <tr>
+                <th>Name</th>
+                <th>Number of Missed Votes</th>
+                <th>% Missed</th>
+            </tr>
+        </thead>*/
 /*function tableEngaged(isAscendente,orden)
 {
   if(isAscendente){
