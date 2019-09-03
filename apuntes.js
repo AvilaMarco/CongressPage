@@ -70,3 +70,35 @@ methods se ejecuta siempe que cambian las vaiables de as instancia*/
 //obtene datos json: http://static.socraticarts.com/AjaxTester/
 /*/metadata/state/
 /legislators?state=CA*/
+// scope del query querySelector
+
+
+/*[{
+	"id": "CAL000385", 
+	"leg_id": "CAL000385", 
+	"all_ids": ["CAL000385"], 
+	"full_name": "Brian Maienschein", "first_name": "Brian", "last_name": "Maienschein", 
+	"suffix": "", 
+	"photo_url": "https://www.assembly.ca.gov/sites/assembly.ca.gov/files/memberphotos/ad77-brian_maienschein_120x150.jpg", 
+	"url": "https://a77.asmdc.org/", 
+	"email": null, 
+	"party": "Democratic", 
+	"chamber": "lower", 
+	"district": "77", 
+	"state": "ca", 
+	"sources": [{"url": "http://assembly.ca.gov/assemblymembers"}], 
+	"active": true, 
+	"roles": [{"term": "20172018", "district": "77", "chamber": "lower", "state": "ca", "party": "Democratic", "type": "member", "start_date": null, "end_date": null}], 
+	"offices": [{"name": "Capitol Office", "fax": null, "phone": "916-319-2077", "email": null, "address": "P.O. Box 942849;Sacramento, CA 94249-0077", "type": "capitol"}, {"name": "District Office #1", "fax": null, "phone": "858-675-0077", "email": null, "address": "12396 World Trade Drive, Suite 118;San Diego, CA 92128", "type": "district"}], 
+	"old_roles": {}, 
+	"middle_name": "", 
+	"country": "us", 
+	"level": "state", 
+	"created_at": "2018-10-18 14:35:18", 
+	"updated_at": "2019-08-22 23:30:37"
+}*/
+
+/*function de orden superior, tiene parametro funcion y la palabra this, en vue hay que usar en general un aux
+lista computada = computed sirve para retornar listas de cosas siempre se usa el return*/
+
+// https://mindhubweb.xtolcorp.com/ebooks/item?id=1439/**/

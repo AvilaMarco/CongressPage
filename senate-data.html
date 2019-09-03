@@ -57,6 +57,14 @@
                         </div>
                     </div>
                 </li>
+                <li class="nav-item col-md-3">
+                    <div class="form-check-inline float-lg-right">
+                        <select v-model="storageSelect" @change="irALegislators" class="form-control ml-2 btn">
+                            <option>State Legislatures</option>
+                            <option v-for="state in selecStates" :value="state">{{state}}</option>
+                        </select>
+                    </div>
+                </li>
             </ul>
         </nav>
 

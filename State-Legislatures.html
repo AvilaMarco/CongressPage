@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="app">
 
         <!-- header -->
         <header id="lolayty">
@@ -49,13 +49,16 @@
                     </div>
                 </li>
                 <li class="nav-item col-md-2">
-                    <a class="nav-link btn btn-secondary" data-toggle="collapse" href="#collapse3">Party Loyalty</a>
+                    <a class="nav-link btn" data-toggle="collapse" href="#collapse3">Party Loyalty</a>
                     <div id="collapse3" class="panel-collapse collapse">
                         <div class="list-group">
                           <a class="list-group-item list-group-item-action" href="#">Senate</a>
                           <a class="list-group-item list-group-item-action" href="house-party-loyalty-statistics.html">House</a>
                         </div>
                     </div>
+                </li>
+                <li class="nav-item col-md-2">
+                    <a  class="nav-link text-center btn btn-secondary" href="#">State Legislatures</a>
                 </li>
             </ul>
         </nav>
@@ -68,14 +71,19 @@
 						<th>name</th>
 						<th>state</th>
 						<th>party</th>
-						<th>nose</th>
+						<th>district</th>
+                        <th>chamber</th>
 					</tr>
 				</thead>
-				<tbody>
-					<td>pepe</td>
-					<td>florida</td>
-					<td>pro</td>
-					<td>ni idea</td>
+				<tbody v-if="estalisto && estalisto2">
+					<tr v-for="menber in datosCongress">
+                        <td><a :href="menber.url">{{menber.full_name}}</a></td>
+                        <td>{{menber.state}}</td>
+                        <td>{{menber.party}}</td>
+                        <td>{{menber.district}}</td>
+                        <td v-if="menber.chamber=='upper'">{{stateMetadata.chambers.upper.title}}</td>
+                        <td v-else-if="menber.chamber=='lower'">{{stateMetadata.chambers.lower.title}}</td>                
+                    </tr>
 				</tbody>
 			</table>
 		</main>
@@ -89,5 +97,6 @@
 
     <!-- font awesone -->
     <script src="https://kit.fontawesome.com/c1c77cc02b.js"></script>
+    <script type="text/javascript" src="js/task5.js"></script>
 </body>
 </html>
