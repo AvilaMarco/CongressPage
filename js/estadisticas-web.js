@@ -26,6 +26,7 @@ function traerJson(pagina)
 	}).then(function(response){if(response.ok){return response.json()}
 	}).then(function(data){
     app.datosCongress = data.results[0].members;
+    app.selects();
     listasPorPartido(app.datosCongress);
       
     //contruir tablas con las estadisticas
@@ -136,7 +137,23 @@ let app = new Vue({
     menbersM:[],
     menbersL:[],
     si:true,
-    no:false
+    no:false,
+    selecStates:[],
+    links:{
+            index:"index.html",
+            sdata:"senate-data.html",
+            hdata:"house-data.html",
+            sattendance:"senate-attendance-statistics.html",
+            hattendance:"house-attendance-statistics.html",
+            sloyalty:"senate-party-loyalty-statistics.html",
+            hloyalty:"house-party-loyalty-statistics.html"
+        },
+    cargoestados:false
+  },
+  methods:{
+    selects(){
+            this.datosCongress.forEach(e=>this.selecStates.indexOf(e.state)==-1?this.selecStates.push(e.state):null)
+            app.cargoestados = true; },
   }
 })
 

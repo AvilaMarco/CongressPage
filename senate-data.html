@@ -25,48 +25,7 @@
         </header>
 
         <!-- NAV -->
-        <nav class="mb-4 navbar navbar-expand bg-light border border-dark text-center">
-            <ul class="navbar-nav row w-100 mx-auto">
-                <li class="nav-item col-md-2">
-                    <a  class="nav-link text-center" href="index.html">Home</a>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link btn btn-secondary" data-toggle="collapse" href="#collapse1">Congress 113</a>
-                    <div id="collapse1" class="panel-collapse collapse">
-                        <div class="list-group">
-                          <a class="list-group-item list-group-item-action" href="#">Senate</a>
-                          <a class="list-group-item list-group-item-action" href="house-data.html">House</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link text-center" data-toggle="collapse" href="#collapse2">Attendance</a>
-                    <div id="collapse2" class="panel-collapse collapse">
-                        <div class="list-group">
-                          <a class="list-group-item list-group-item-action" href="senate-attendance-statistics.html">Senate</a>
-                          <a class="list-group-item list-group-item-action" href="house-attendance-statistics.html">House</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link text-center" data-toggle="collapse" href="#collapse3">Paty Loyalty</a>
-                    <div id="collapse3" class="panel-collapse collapse">
-                        <div class="list-group">
-                          <a class="list-group-item list-group-item-action" href="senate-party-loyalty-statistics.html">Senate</a>
-                          <a class="list-group-item list-group-item-action" href="house-party-loyalty-statistics.html">House</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item col-md-3">
-                    <div class="form-check-inline float-lg-right">
-                        <select v-model="storageSelect" @change="irALegislators" class="form-control ml-2 btn">
-                            <option>State Legislatures</option>
-                            <option v-for="state in selecStates" :value="state">{{state}}</option>
-                        </select>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+        <navegacion storageSelect="storageSelect" :isready="cargoestados" congressboton="btn btn-secondary" :arrayestados="selecStates" :linkess="links"></navegacion>
 
         <!-- main -->
         <main>
@@ -98,7 +57,7 @@
                         <legend>Filter by State:</legend>
                         <select v-model="valueSelect" @change="filter" class="form-control ml-2" id="state-filter">
                             <option value="all">All</option>
-                            <option v-for="(state in selecStates" :value="state">{{state}}</option>
+                            <option v-for="state in selecStates" :value="state">{{state}}</option>
                         </select>
                     </div>
                   
@@ -152,7 +111,7 @@
         <!--font awesone -->
     <script src="https://kit.fontawesome.com/c1c77cc02b.js"></script>
         <!-- datos json -->
-    <!--<script type="text/javascript" src="js/-congress-113-senate.js"></script>-->
+    <script type="text/javascript" src="js/componentes.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

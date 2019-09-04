@@ -26,40 +26,8 @@
         </header>
 
         <!-- NAV -->
-        <nav class="mb-4 navbar navbar-expand bg-light border border-dark text-center">
-            <ul class="navbar-nav row w-100 mx-auto">
-                <li class="nav-item col-md-2">
-                    <a  class="nav-link text-center" href="index.html">Home</a>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link text-center" data-toggle="collapse" href="#collapse1">Congress 113</a>
-                    <div id="collapse1" class="panel-collapse collapse">
-                        <div class="list-group">
-                          <a class="list-group-item list-group-item-action" href="senate-data.html">Senate</a>
-                          <a class="list-group-item list-group-item-action" href="house-data.html">House</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link btn btn-secondary" data-toggle="collapse" href="#collapse2">Attendance</a>
-                    <div id="collapse2" class="panel-collapse collapse">
-                        <div class="list-group">
-                          <a class="list-group-item list-group-item-action" href="senate-attendance-statistics.html">Senate</a>
-                          <a class="list-group-item list-group-item-action" href="#">House</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link text-center" data-toggle="collapse" href="#collapse3">Paty Loyalty</a>
-                    <div id="collapse3" class="panel-collapse collapse">
-                        <div class="list-group">
-                          <a class="list-group-item list-group-item-action" href="senate-party-loyalty-statistics.html">Senate</a>
-                          <a class="list-group-item list-group-item-action" href="house-party-loyalty-statistics.html">House</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+        <navegacion storageSelect="storageSelect" :isready="cargoestados" atboton="btn btn-secondary" :arrayestados="selecStates" :linkess="links"></navegacion>
+
         <!--Table container-->
         <div class="row border border-dark border-top-0 border-left-0 border-right-0">
             <div class="col-md-6 hestandar">
@@ -101,8 +69,8 @@
     <!-- font awesone -->
     <script src="https://kit.fontawesome.com/c1c77cc02b.js"></script>
 
-        <!-- datos script -->
-    <script type="text/javascript" src="js/-congress-113-house.js"></script>
+    <!-- datos script -->
+    <script type="text/javascript" src="js/componentes.js"></script>
     <script type="text/javascript" src="js/estadisticas-web.js"></script>    
 </body>
 </html>

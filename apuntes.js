@@ -102,3 +102,6 @@ methods se ejecuta siempe que cambian las vaiables de as instancia*/
 lista computada = computed sirve para retornar listas de cosas siempre se usa el return*/
 
 // https://mindhubweb.xtolcorp.com/ebooks/item?id=1439/**/
+// created:{
+// 	lo primero que se ejecuta con el vue, cuando se instancia
+// }

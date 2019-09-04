@@ -25,43 +25,7 @@
         </header>
 
         <!-- NAV -->
-        <nav id="senate-data" class="mb-4 navbar navbar-expand bg-light border border-dark text-center">
-            <ul class="navbar-nav row w-100 mx-auto">
-                <li class="nav-item col-md-2">
-                    <a  class="nav-link text-center" href="index.html">Home</a>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link text-center" data-toggle="collapse" href="#collapse1">Congress 113</a>
-                    <div id="collapse1" class="panel-collapse collapse">
-                        <div class="list-group">
-                          <a class="list-group-item list-group-item-action" href="senate-data.html">Senate</a>
-                          <a class="list-group-item list-group-item-action" href="house-data.html">House</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link text-center" data-toggle="collapse" href="#collapse2">Attendance</a>
-                    <div id="collapse2" class="panel-collapse collapse">
-                        <div class="list-group">
-                          <a class="list-group-item list-group-item-action" href="senate-attendance-statistics.html">Senate</a>
-                          <a class="list-group-item list-group-item-action" href="house-attendance-statistics.html">House</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a class="nav-link btn" data-toggle="collapse" href="#collapse3">Party Loyalty</a>
-                    <div id="collapse3" class="panel-collapse collapse">
-                        <div class="list-group">
-                          <a class="list-group-item list-group-item-action" href="#">Senate</a>
-                          <a class="list-group-item list-group-item-action" href="house-party-loyalty-statistics.html">House</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item col-md-2">
-                    <a  class="nav-link text-center btn btn-secondary" href="#">State Legislatures</a>
-                </li>
-            </ul>
-        </nav>
+        <navegacion storageSelect="storageSelect" legisboton="bg-secondary text-primary " :isready="cargoestados" :arrayestados="selecStates" :linkess="links"></navegacion>
 
 		<main>
 			<h1>datos open states</h1>
@@ -97,6 +61,7 @@
 
     <!-- font awesone -->
     <script src="https://kit.fontawesome.com/c1c77cc02b.js"></script>
+    <script type="text/javascript" src="js/componentes.js"></script>
     <script type="text/javascript" src="js/task5.js"></script>
 </body>
 </html>

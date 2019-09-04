@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-  <div class="container">
+  <div id="app" class="container">
 
     <!-- header -->
     <header>
@@ -25,40 +25,7 @@
     </header>
 
     <!-- nav -->
-    <nav class="mb-4 navbar navbar-expand bg-light border border-dark text-center">
-      <ul class="navbar-nav row w-100 mx-auto">
-        <li class="nav-item col-md-2">
-            <a  class="nav-link text-center btn btn-secondary" href="#">Home</a>
-        </li>
-        <li class="nav-item col-md-2 text-center">
-            <a class="nav-link" data-toggle="collapse" href="#collapse1">Congress 113</a>
-            <div id="collapse1" class="panel-collapse collapse">
-                <div class="list-group">
-                  <a class="list-group-item list-group-item-action" href="senate-data.html">Senate</a>
-                  <a class="list-group-item list-group-item-action" href="house-data.html">House</a>
-                </div>
-            </div>
-        </li>
-        <li class="nav-item col-md-2">
-            <a class="nav-link text-center" data-toggle="collapse" href="#collapse2">Attendance</a>
-            <div id="collapse2" class="panel-collapse collapse">
-                <div class="list-group">
-                  <a class="list-group-item list-group-item-action" href="senate-attendance-statistics.html">Senate</a>
-                  <a class="list-group-item list-group-item-action" href="house-attendance-statistics.html">House</a>
-                </div>
-            </div>
-        </li>
-        <li class="nav-item col-md-2">
-            <a class="nav-link text-center" data-toggle="collapse" href="#collapse3">Party Loyalty</a>
-            <div id="collapse3" class="panel-collapse collapse">
-                <div class="list-group">
-                  <a class="list-group-item list-group-item-action" href="senate-party-loyalty-statistics.html">Senate</a>
-                  <a class="list-group-item list-group-item-action" href="house-party-loyalty-statistics.html">House</a>
-                </div>
-            </div>
-        </li>
-      </ul>
-    </nav>
+    <navegacion storageSelect="storageSelect" :isready="cargoestados" indexboton="btn btn-secondary" :arrayestados="selecStates" :linkess="links"></navegacion>
 
     <!-- main -->
     <main>
@@ -95,10 +62,13 @@
   </div>
     
     <!--scipts-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- font awesone -->
   <script src="https://kit.fontawesome.com/c1c77cc02b.js"></script>
+  <script type="text/javascript" src="js/componentes.js"></script>
+  <script type="text/javascript" src="js/task5.js"></script>
 </body>
 </html>

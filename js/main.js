@@ -20,7 +20,7 @@ function definirCarga()
 	}
 }
 
-let app = new Vue({
+let aPP = new Vue({
     el:'#app',
     data:{
         checkbox:[
@@ -37,28 +37,43 @@ let app = new Vue({
                 name:"Independent"
             }
         ],
+        links:{
+            index:"index.html",
+            sdata:"senate-data.html",
+            hdata:"house-data.html",
+            sattendance:"senate-attendance-statistics.html",
+            hattendance:"house-attendance-statistics.html",
+            sloyalty:"senate-party-loyalty-statistics.html",
+            hloyalty:"house-party-loyalty-statistics.html"
+                },
         primeraCarga:true,
         datosCongress:[],
         selecStates:[],
         valueSelect:"all",
         tablaux:[],
         checkboxaux:[],
-        storageSelect:"State Legislatures"
+        cargoestados:false
     },
     methods:{
         selects(){
-        this.datosCongress.forEach(e=>this.selecStates.indexOf(e.state)==-1?this.selecStates.push(e.state):null)
-        },
+            this.datosCongress.forEach(e=>this.selecStates.indexOf(e.state)==-1?this.selecStates.push(e.state):null)
+            aPP.cargoestados = true;     },
         filter(){
           this.primeraCarga=false
           this.tablaux = []
           let filtrado = (this.valueSelect!="all" && this.checkboxaux.length!=0)
           this.datosCongress.forEach(e=>((filtrado) ? (this.checkboxaux.indexOf(e.party)>=0 && this.valueSelect==e.state):(this.checkboxaux.indexOf(e.party)>=0 || this.valueSelect==e.state))?this.tablaux.push(e):null)
+          
           if(this.valueSelect=="all" && this.checkboxaux.length==0){this.primeraCarga=true}
         },
-        irALegislators(){
-            localStorage.setItem('state', this.storageSelect);
-            location.assign("State-Legislatures.html");
+        paginaActual(){
+                {let aux = location.href.split("/");
+                let aux2 = this.links
+                for (link in aux2) {
+                   if(aux[aux.length-1]==aux2[link])
+                    this.links[link] = "#"
+                }
+                }
         }
     }
 })
@@ -71,8 +86,9 @@ function traerJson(pagina)
 	headers :{'X-API-Key': 'Sn4XoZPWj9ebHDI5w77k3Jhb00q4kkIGfMxdc3Vr'}
 	}).then(function(response){ if(response.ok){return response.json() }
 	}).then(function(data){
-	app.datosCongress = data.results[0].members;
-    app.selects();
+	aPP.datosCongress = data.results[0].members;
+    aPP.selects();
+    aPP.paginaActual();
     document.querySelector('#carga').style.display = "none";
 	});
 }
