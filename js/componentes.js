@@ -19,6 +19,9 @@ Vue.component('navegacion',{
         arrayestados:{
             type: Array
         },
+        fetchestalisto:{
+            type:Boolean
+        },
         linkess:{
             type: Object
         },
@@ -73,7 +76,7 @@ Vue.component('navegacion',{
                 </li>
                 <li class="nav-item col-md-3">
                     <div class="form-check-inline float-lg-right">
-                        <select v-model="storageSelect" @change="irALegislators" :class="legisboton" class="form-control ml-2 btn">
+                        <select v-if="fetchestalisto" v-model="storageSelect" @change="irALegislators" :class="legisboton" class="form-control ml-2 btn">
                             <option>State Legislatures</option>
                             <option v-for="state in arrayestados" :value="state">{{state}}</option>
                         </select>
@@ -195,12 +198,12 @@ let app = new Vue({
             sloyalty:"senate-party-loyalty-statistics.html",
             hloyalty:"house-party-loyalty-statistics.html"
         },
-        selecStates:localStorage.getItem("arrayEstados").split(","),
         datosCongress:[],
         datosCongressLegislators:[],
         stateMetadata:[],
         metadatosReady:false,
         legislatorsReady:false,
+        fetchreadyV:false,
         estadisticasVue:{},
         menbersM:[],
         menbersL:[],
@@ -210,6 +213,14 @@ let app = new Vue({
         valueSelect:"all",
         tablaux:[],
         checkboxaux:[],
+    },
+    computed:{
+        selecStates(){
+        /*selecStates:localStorage.getItem("arrayEstados").split(","),*/
+        if (this.fetchreadyV) {
+            return localStorage.getItem("arrayEstados").split(",")
+        }
+        }
     },
     methods:
     {

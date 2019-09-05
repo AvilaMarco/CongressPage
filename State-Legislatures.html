@@ -14,7 +14,7 @@
         <encabezado></encabezado>
 
         <!-- NAV -->
-        <navegacion storageSelect="storageSelect" legisboton="bg-secondary text-white" :arrayestados="selecStates" :linkess="links"></navegacion>
+        <navegacion storageSelect="storageSelect" :fetchestalisto="fetchreadyV" legisboton="bg-secondary text-white" :arrayestados="selecStates" :linkess="links"></navegacion>
 
 		<main>
 			<h1>datos open states</h1>
@@ -30,7 +30,7 @@
 				</thead>
 				<tbody v-if="metadatosReady && legislatorsReady">
 					<tr v-for="menber in datosCongressLegislators">
-                        <td><a :href="menber.url">{{menber.full_name}}</a></td>
+                        <td><a :href="menber.url" target="_blank">{{menber.full_name}}</a></td>
                         <td>{{menber.state}}</td>
                         <td>{{menber.party}}</td>
                         <td>{{menber.district}}</td>
