@@ -1,4 +1,3 @@
-var linkWeb = []
 function traerJson(pagina)
 {
 	fetch('https://api.propublica.org/congress/v1/113/'+pagina+'/members.json',
@@ -18,13 +17,14 @@ function traerJson(pagina)
 		let estados = []
 		JSON.parse(localStorage.getItem("congresssenate")).forEach(e=>estados.indexOf(e.state)==-1?estados.push(e.state):null)
 		localStorage.setItem('arrayEstados',estados)
-		var aux = location.href.split("/");
-		var linkWeb = aux[aux.length-1].split("-")
 		app.fetchreadyV = true
 	}).catch(function(error){
 		console.log(error);
 	})
 }
+var aux = location.href.split("/");
+var linkWeb = aux[aux.length-1].split("-")
+
 if (app.fetchreadyV==null) {
 traerJson("house")
 traerJson("senate")
