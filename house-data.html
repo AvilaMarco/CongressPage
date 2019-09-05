@@ -11,21 +11,10 @@
   <div id="app" class="container">
 
     <!-- header -->
-    <header>
-      <div class="d-flex">
-        <div class="m-4 ">
-            <i class="fab fa-searchengin fuente1"></i>
-            <a href="#" class="fuente1">TGIF</a>
-        </div>
-          <div class="m-4 ml-auto">
-            <i class="far fa-envelope fuente1"></i>
-            <a class="fuente1" href="mailto:info@tgif.net">info@tgif.net</a>
-        </div>
-      </div>
-    </header>
+    <encabezado></encabezado>
 
     <!-- nav -->
-     <navegacion storageSelect="storageSelect" :isready="cargoestados" congressboton="btn btn-secondary" :arrayestados="selecStates" :linkess="links"></navegacion>
+     <navegacion storageSelect="storageSelect" congressboton="btn btn-secondary" :arrayestados="selecStates" :linkess="links"></navegacion>
 
     <!-- main -->
     <main>
@@ -91,7 +80,6 @@
               </tbody>
           </table>
       </div>
-      <div class="spinner-border text-muted" id="carga"></div>
     </main>
     <footer >
       <div class="card-footer text-center mb-5 border border-dark" id="footer">
@@ -100,15 +88,19 @@
     </footer>
   </div>
 
-  <!-- scripts -->
-    <!--vue js-->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!--scipts de frame works-->
+  <!-- vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- jquery y popper para bootstrap -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- bootstrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- font awesone -->
   <script src="https://kit.fontawesome.com/c1c77cc02b.js"></script>
-  <!-- datos json -->
+
+  <!-- scripts propias/locales -->
+  <script type="text/javascript" src="js/variablesglobales.js"></script>
   <script type="text/javascript" src="js/componentes.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </body>
