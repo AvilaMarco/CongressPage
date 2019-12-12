@@ -51,6 +51,26 @@
   </div>
     
   <!--scipts de frame works-->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use 
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCUVXELsprj9fbHxPscvzuOWgaaP103pzQ",
+      authDomain: "apicongresspage.firebaseapp.com",
+      databaseURL: "https://apicongresspage.firebaseio.com",
+      projectId: "apicongresspage",
+      storageBucket: "apicongresspage.appspot.com",
+      messagingSenderId: "407454254507",
+      appId: "1:407454254507:web:4e31904aa28223eec5feee"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
   <!-- vue -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <!-- jquery y popper para bootstrap -->
